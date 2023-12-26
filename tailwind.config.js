@@ -6,7 +6,13 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        krona: ['Krona One', 'sans-serif'],
+        manrope: ['Manrope','sans-serif'],
+        kosugi: ['Kosugi Maru', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }
