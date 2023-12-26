@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.btn {
+    border-radius: 1.5625rem;
+    background: var(--Stye1, linear-gradient(90deg, #AD00FF 0%, rgba(98, 48, 255, 0.90) 47.92%, #006FFF 100%));
+}
+
+.ctn {
+    @apply max-w-[23.625rem] md:max-w-3xl px-4 mx-auto;
+}
