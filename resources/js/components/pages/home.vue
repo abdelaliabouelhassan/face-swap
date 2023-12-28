@@ -6,7 +6,7 @@
                 Want to see yourself acting in famous movie or become anyone in your dream? Simply do it with FACESWAPPER.AI face swapper
             </p>
             <div class=" w-full max-w-lg mx-auto pt-10">
-                <Generate />
+                <Generate @result='getResult' />
             </div>
         </div>
 
@@ -17,7 +17,7 @@
                 Upload realistic front face images will improve AI generation results!
             </p>
             <div class=" w-full max-w-lg mx-auto pt-10 space-y-10">
-                <Result />
+                <Result :result='resultImage'/>
                 <p class=" text-center text-black font-kosugi text-[0.8125rem] md:text-[1rem]">
                     Your generation record will be deleted after 24 hours, please download your images in time!
                 </p>
@@ -120,8 +120,13 @@
 
 
 <script setup>
+import { ref } from "vue";
  import Generate from '../UI/Generate.vue'
  import Result from '../UI/Result.vue'
+ const resultImage = ref(null)
+ const getResult = (image) => {
+    resultImage.value = image;
+ }
 </script>
 
 

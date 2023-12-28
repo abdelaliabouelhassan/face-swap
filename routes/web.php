@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\generateImage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/generate', function () {
+Route::get('/generate', function () {
     $replicateApiToken = '21c24abe7913a01025d3f030399702f07b62d451'; // Replace with your actual API token
 
     $response = Http::withHeaders([
@@ -46,7 +47,7 @@ Route::get('/resutls', function () {
     $response = Http::withHeaders([
         'Authorization' => 'Token ' . $replicateApiToken,
         'Content-Type' => 'application/json',
-    ])->get('https://api.replicate.com/v1/predictions/lbgf5sjbinjbsmtkpp4qhzf76a');
+    ])->get('https://api.replicate.com/v1/predictions/vzra76jbznu3na6im5i4gcskjy');
 
     // Access the response content
     $responseData = $response->json();
@@ -59,3 +60,7 @@ Route::get('/resutls', function () {
 Route::get('/', function () {
   return view('welcome');
 });
+
+
+Route::post('/generate',[generateImage::class,'generate'])->name('generate');
+Route::post('get-results',[generateImage::class,'results'])->name('results');
