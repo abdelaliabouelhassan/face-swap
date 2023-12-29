@@ -102,7 +102,7 @@ class Replicate
     private function stroeImage($request)
     {
       
-        $imageName = time() . '.' . $request->extension();
+        $imageName =  time().'_' . Str::random(10) . '_'. '.' . $request->extension();
         $request->move(public_path('uploads'), $imageName);
 
        return  '/uploads/' .  $imageName;
