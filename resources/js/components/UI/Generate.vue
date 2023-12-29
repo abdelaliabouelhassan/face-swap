@@ -3,7 +3,7 @@
         <div class=" w-full flex items-center justify-between sm:space-x-4">
             <div class=" flex flex-col items-center space-y-2">
                 <div class=" w-[9.4375rem] flex h-[9.4375rem] md:w-[15rem] md:h-[15rem] bg-[#D9D9D9] overflow-hidden rounded-lg cursor-pointer" @click="faceRef.click">
-                    <input type="file" hidden ref="faceRef" @change="getFaceImage">
+                    <input type="file" hidden ref="faceRef" @change="getFaceImage" accept="image/*">
                     <div class=" m-auto" v-if="SelectedFaceImage == null">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.0186 7.49541C2 8.22358 2 9.05225 2 10V12H10.0971C9.76426 11.8433 9.40022 11.74 9.01534 11.7015L7 11.5H6.99999C5.68663 11.3687 5.02995 11.303 4.49718 11.087C3.36574 10.6283 2.50574 9.67803 2.1619 8.50656C2.0787 8.22308 2.03826 7.91099 2.0186 7.49541ZM21.8742 5.77457L21.5 17C20.5396 17 19.6185 16.6185 18.9393 15.9393L17.8123 14.8123C17.4423 14.4423 17.2572 14.2572 17.0697 14.1385C16.4165 13.7251 15.5835 13.7251 14.9303 14.1385C14.7428 14.2572 14.5577 14.4423 14.1877 14.8123L13.4145 15.5855C12.8925 16.1075 12 15.7378 12 14.9996V22H14C17.7712 22 19.6569 22 20.8284 20.8284C22 19.6569 22 17.7712 22 14V10C22 8.20744 22 6.8409 21.8742 5.77457Z" fill="#222222"/>
@@ -26,7 +26,7 @@
             </div>
             <div class=" flex flex-col items-center space-y-2">
                 <div class=" w-[9.4375rem] h-[9.4375rem] flex md:w-[15rem] md:h-[15rem] bg-[#D9D9D9] overflow-hidden rounded-lg cursor-pointer" @click="originalRef.click">
-                    <input type="file" hidden ref="originalRef" @change="getOriginImage">
+                    <input type="file" hidden ref="originalRef" @change="getOriginImage" accept="image/*">
                      <div class=" m-auto" v-if="SelectedOriginImage == null">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.0186 7.49541C2 8.22358 2 9.05225 2 10V12H10.0971C9.76426 11.8433 9.40022 11.74 9.01534 11.7015L7 11.5H6.99999C5.68663 11.3687 5.02995 11.303 4.49718 11.087C3.36574 10.6283 2.50574 9.67803 2.1619 8.50656C2.0787 8.22308 2.03826 7.91099 2.0186 7.49541ZM21.8742 5.77457L21.5 17C20.5396 17 19.6185 16.6185 18.9393 15.9393L17.8123 14.8123C17.4423 14.4423 17.2572 14.2572 17.0697 14.1385C16.4165 13.7251 15.5835 13.7251 14.9303 14.1385C14.7428 14.2572 14.5577 14.4423 14.1877 14.8123L13.4145 15.5855C12.8925 16.1075 12 15.7378 12 14.9996V22H14C17.7712 22 19.6569 22 20.8284 20.8284C22 19.6569 22 17.7712 22 14V10C22 8.20744 22 6.8409 21.8742 5.77457Z" fill="#222222"/>
@@ -143,7 +143,7 @@ import { ref,defineEmits } from "vue";
 
 
   const generate = () => {
-  
+ 
     if(!validate()){
         alert('please add Face and Original Image')
         return;
@@ -158,6 +158,10 @@ import { ref,defineEmits } from "vue";
         console.log(response);
         let data = response.data;
         getReplicate(data.id);
+        var resultElement = document.getElementById("results");
+        if (resultElement) {
+            resultElement.scrollIntoView({ behavior: "smooth" });
+        }
     })
     .catch(function (error) {
         // handle error

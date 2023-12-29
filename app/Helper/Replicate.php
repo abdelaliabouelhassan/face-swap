@@ -43,9 +43,11 @@ class Replicate
                     'cache_days' => 10,
                     'det_thresh' => 0.1,
                     'request_id' => 'aa6a2aad-90ec-4c00-b90b-89f4d62e6b84',
-                    "local_source" => $face,
-                    "local_target" => $origin,
-                    // 'target_image' => 'https://replicate.delivery/pbxt/JkUYWp60oNwz1SF9AJvJPv7upLqucTyaeCxQ07qZGijlDKxt/face_swap_09.jpg',
+                    // "local_source" => $face,
+                    // "local_target" => $origin,
+                     'target_image' => $origin,
+                     'source_image' => $face,
+                    //  'source_image' => 'https://replicate.delivery/pbxt/JkUYWp60oNwz1SF9AJvJPv7upLqucTyaeCxQ07qZGijlDKxt/face_swap_09.jpg',
                 ],
             ])->throw(); // throw exception if status code is not  in the 200-299 range;
         
