@@ -69,7 +69,7 @@ import { ref,defineEmits } from "vue";
   let fileInputFace = null;
   let fileInputOrigin = null
   const loading = ref(false)
-    const emits = defineEmits(['result']);
+    const emits = defineEmits(['result','loading']);
   
   const getFaceImage = (e) => {
 
@@ -143,7 +143,7 @@ import { ref,defineEmits } from "vue";
 
 
   const generate = () => {
- 
+    
     if(!validate()){
         alert('please add Face and Original Image')
         return;
@@ -162,11 +162,14 @@ import { ref,defineEmits } from "vue";
         if (resultElement) {
             resultElement.scrollIntoView({ behavior: "smooth" });
         }
+        emits('loading',true)
     })
     .catch(function (error) {
         // handle error
          loading.value = false
         console.log(error);
+
+        emits('loading',false)
     })
     .finally(function () {
         // always executed
@@ -174,6 +177,7 @@ import { ref,defineEmits } from "vue";
   }
 
    const getReplicate = (replicated_id) => {
+          emits('loading',true)
              axios.post('/get-results', {id:replicated_id}).then((response) => {
 
                      console.log(response.data)
@@ -188,6 +192,7 @@ import { ref,defineEmits } from "vue";
                             // The status is "succeeded," you can handle it here
                             loading.value = false;
                             emits('result',response.data.images)
+                             emits('loading',false)
                             //PrepareResults(response.data)
                         }
                      }
