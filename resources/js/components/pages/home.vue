@@ -3,7 +3,7 @@
         <div class=" w-full flex flex-col items-center space-y-4 pb-10 ctn" id="uploads">
             <h1 class=" text-black font-krona font-normal text-2xl md:text-5xl text-center">Swap Faces Online</h1>
             <p class=" text-black font-manrope text-[0.9375rem] md:text-[1.5rem] text-center font-normal">
-                Want to see yourself acting in famous movie or become anyone in your dream? Simply do it with FaceSwitcherOnline.com face swapper
+                Want to see yourself acting in famous movie or become anyone in your dream? Simply do it with FaceSwitcherOnline face swapper
             </p>
             <div class=" w-full max-w-lg mx-auto pt-10">
                 <Generate @result='getResult' @loading='getLoading' />
