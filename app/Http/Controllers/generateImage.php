@@ -11,8 +11,8 @@ class generateImage extends Controller
     public function generate(Request $request){
        
         $request->validate([
-            'origin' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'face' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'origin' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'face' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
         ]);
 
     

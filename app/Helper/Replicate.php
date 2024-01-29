@@ -103,7 +103,9 @@ class Replicate
     {
       
         $imageName =  time().'_' . Str::random(10) . '_'. '.' . $request->extension();
-        $request->move(public_path('uploads'), $imageName);
+     
+        // $request->move(public_path('uploads'), $imageName);
+        $request->move('uploads', $imageName);
 
        return  '/uploads/' .  $imageName;
     }
